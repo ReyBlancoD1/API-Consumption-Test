@@ -28,7 +28,8 @@ A CRUD web application built with **ASP.NET Core 8**, **SQL Server Stored Proced
              │                       │
              ▼                       ▼
    ┌───────────────────┐   ┌───────────────────┐
-   │  .Services        │   │  .Data            │
+   │  .Services        │   │                   │
+   │    Consumption    │   │  .Data            │
    │  (HttpClient,     │   │  (Repositories,   │
    │   external API)   │   │   ADO.NET + SPs)  │
    └─────────┬─────────┘   └─────────┬─────────┘
@@ -44,12 +45,12 @@ A CRUD web application built with **ASP.NET Core 8**, **SQL Server Stored Proced
 **Dependency rule:** outer layers depend on inner layers, never the reverse.
 The `Domain` project has **zero dependencies** — it's the core of the system.
 
-| Project                       | Type          | Responsibility                                           |
-| ----------------------------- | ------------- | -------------------------------------------------------- |
-| `ProductManagement.Domain`    | Class Library | Entities (`Product`) and DTOs (`ExchangeRateDto`)         |
-| `ProductManagement.Data`      | Class Library | Repository pattern, ADO.NET, calls SQL Server procedures |
-| `ProductManagement.Services`  | Class Library | Business logic, external API consumption via HttpClient  |
-| `ProductManagement.Web`       | ASP.NET Core  | Controllers (REST + MVC), Razor Views, entry point       |
+| Project                                  | Type          | Responsibility                                           |
+| -----------------------------            | ------------- | -------------------------------------------------------- |
+| `ProductManagement.Domain`               | Class Library | Entities (`Product`) and DTOs (`ExchangeRateDto`)        |
+| `ProductManagement.Data`                 | Class Library | Repository pattern, ADO.NET, calls SQL Server procedures |
+| `ProductManagement.ServicesConsumption`  | Class Library | Business logic, external API consumption via HttpClient  |
+| `ProductManagement.Web`                  | ASP.NET Core  | Controllers (REST + MVC), Razor Views, entry point       |
 
 ---
 
