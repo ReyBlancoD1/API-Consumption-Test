@@ -1,4 +1,4 @@
-# DISCLAIMER: Readme file and css styles are Copilot AI enhanced*
+## DISCLAIMER: *Readme file and css styles are Copilot AI enhanced*
 # 📦 Product Management System
 
 A CRUD web application built with **ASP.NET Core 8**, **SQL Server Stored Procedures**, and a **public API** integration. The project follows a layered architecture using separate class libraries for Domain, Data, ServicesConsumption, and Web.
