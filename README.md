@@ -102,7 +102,7 @@ cd ProductManagement
 
 ### 2. Create the database and stored procedures
 
-Open **`Database/DatabaseScript.sql`** in SSMS / Azure Data Studio / VS Code, connect to your SQL Server instance, and run the entire script.
+Open **`ProductManagement.Data/DatabaseScript.sql`** in SSMS / Azure Data Studio / VS Code, connect to your SQL Server instance, and run the entire script.
 
 This will:
 - Create the `ProductManagementDB` database
