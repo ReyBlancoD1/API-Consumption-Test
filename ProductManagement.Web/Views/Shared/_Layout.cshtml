@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Product Management</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="brand" href="/">📦 Product Manager</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/Products">Products</a>
+                <a href="/swagger" target="_blank">API Docs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-error">@TempData["Error"]</div>
+        }
+
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <small>&copy; @DateTime.Now.Year — Product Management Demo</small>
+        </div>
+    </footer>
+</body>
+</html>

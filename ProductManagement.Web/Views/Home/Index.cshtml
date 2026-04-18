@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="hero">
+    <h1>📦 Product Management System</h1>
+    <p class="lead">CRUD system with SQL Server Stored Procedures + Public API integration</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🗃️ CRUD with Stored Procedures</h3>
+            <p>All data operations go through SQL Server stored procedures via ADO.NET.</p>
+            <a class="btn btn-primary" href="/Products">Manage Products →</a>
+        </div>
+
+        <div class="card">
+            <h3>🌐 API Consumption</h3>
+            <p>Live exchange rates from <code>open.er-api.com</code> — product prices are shown in USD and COP.</p>
+            <a class="btn btn-secondary" href="/Products">View Live Rates →</a>
+        </div>
+
+        <div class="card">
+            <h3>📘 API Documentation</h3>
+            <p>Interactive Swagger UI to test every REST endpoint directly.</p>
+            <a class="btn btn-secondary" href="/swagger" target="_blank">Open Swagger →</a>
+        </div>
+    </div>
+</div>

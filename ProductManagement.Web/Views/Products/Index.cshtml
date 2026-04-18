@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ProductManagement.Domain.Entities.Product>
+@{
+    ViewData["Title"] = "Products";
+    var rate = ViewBag.UsdToCop as decimal?;
+}
+
+<div class="page-header">
+    <h1>Products</h1>
+    <a class="btn btn-primary" href="/Products/Create">+ New Product</a>
+</div>
+
+@if (rate.HasValue)
+{
+    <div class="rate-banner">
+        💱 Live rate (USD → COP): <strong>@rate.Value.ToString("N2")</strong>
+        <small>fetched @(((DateTime)ViewBag.RateFetchedAt).ToString("HH:mm:ss")) UTC</small>
+    </div>
+}
+else
+{
+    <div class="rate-banner rate-banner-warn">
+        ⚠️ Could not load live exchange rate — showing USD only.
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <p class="empty-state">No products yet. Create your first one!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price (USD)</th>
+                <th>Price (COP)</th>
+                <th>Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Description</td>
+                    <td>$@p.Price.ToString("N2")</td>
+                    <td>@(rate.HasValue ? "COP " + (p.Price * rate.Value).ToString("N0") : "—")</td>
+                    <td>@p.CreatedDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td class="actions">
+                        <a class="btn btn-sm" href="/Products/Edit/@p.Id">Edit</a>
+                        <form method="post" action="/Products/Delete/@p.Id" class="inline-form"
+                              onsubmit="return confirm('Delete this product?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
